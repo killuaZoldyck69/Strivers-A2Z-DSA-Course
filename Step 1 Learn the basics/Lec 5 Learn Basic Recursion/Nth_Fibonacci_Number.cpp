@@ -20,3 +20,6 @@ int main()
     cout << nthFibonacci(num) << endl;
     return 0;
 }
+
+// Time Complexity: O(2^N)
+// Space Complexity: O(N)
