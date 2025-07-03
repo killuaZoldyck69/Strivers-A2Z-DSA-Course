@@ -21,25 +21,28 @@ void arrayPrint(vector<int> &arr)
 
 int getLongestSubarray(vector<int> &nums, long long int k)
 {
-    long long int sum = 0;
+    int left, right;
+    left = right = 0;
+    long long int sum = nums[0];
+    int n = nums.size();
     int maxLen = 0;
-    map<long long int, int> preSumMap;
-    for (int i = 0; i < nums.size(); i++)
+    while (right < n)
     {
-        sum += nums[i];
+        while (left <= right && sum > k)
+        {
+            sum -= nums[left];
+            left++;
+        }
+
         if (sum == k)
         {
-            maxLen = max(maxLen, i + 1);
+            maxLen = max(maxLen, right - left + 1);
         }
-        long long int rem = sum - k;
-        if (preSumMap.find(rem) != preSumMap.end())
+
+        right++;
+        if (right < n)
         {
-            int len = i - preSumMap[rem];
-            maxLen = max(maxLen, len);
-        }
-        if (preSumMap.find(sum) == preSumMap.end())
-        {
-            preSumMap[sum] = i;
+            sum += nums[right];
         }
     }
     return maxLen;
@@ -57,5 +60,5 @@ int main()
     return 0;
 }
 
-// Time Complexity: O(n log n)
+// Time Complexity: O(2n)
 // Space Complexity: O(1)
