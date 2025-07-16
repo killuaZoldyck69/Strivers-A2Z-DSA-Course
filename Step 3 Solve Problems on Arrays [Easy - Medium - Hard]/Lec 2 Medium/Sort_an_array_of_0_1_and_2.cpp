@@ -19,7 +19,7 @@ void arrayPrint(vector<int> &arr)
     }
 }
 
-bool sortArray(vector<int> &nums)
+void sortArray(vector<int> &nums)
 {
     int count0, count1, count2;
     count0 = count1 = count2 = 0;

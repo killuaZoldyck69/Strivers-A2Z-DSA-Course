@@ -19,7 +19,8 @@ void arrayPrint(vector<int> &arr)
     }
 }
 
-bool sortArray(vector<int> &nums)
+// Dutch National Flag Algorithm
+void sortArray(vector<int> &nums)
 {
     int low, mid, high;
     low = mid = 0;
